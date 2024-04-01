@@ -15,6 +15,7 @@ class AlienInvasion:
         """Initialize the game, and create game resources. """
         pygame.init()
         self.settings = Settings()
+        self.clock = pygame.time.Clock()
         
         # Tamanho padrão
         self.screen = pygame.display.set_mode((self.settings.screen_width, self.settings.screen_height))    
@@ -36,8 +37,10 @@ class AlienInvasion:
         
         self._create_fleet()
         
-        # Make the Play Button.
-        self.play_button = Button(self, "Play")
+        # Make the Buttons
+        self.play_button = Button(self, "Play", "play")
+        self.plus_button = Button(self, "+", "plus")
+        self.minus_button = Button(self, "-", "minus")
         
         # Set the background color.
         self.bg_color = (230, 230, 230)
@@ -53,6 +56,9 @@ class AlienInvasion:
                 self._update_aliens()
             self._update_screen()
             
+            # Game fps
+            self.clock.tick(self.settings.framerate)
+            
     def _check_events(self):
         """Respond to keypresses and mouse events."""
         for event in pygame.event.get():
@@ -60,21 +66,27 @@ class AlienInvasion:
                 sys.exit()
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 mouse_pos = pygame.mouse.get_pos()
-                self._check_play_button(mouse_pos)
+                self._check_clicks(mouse_pos)
                 
             elif event.type == pygame.KEYDOWN:
                 self._check_keydown_events(event)     
             elif event.type == pygame.KEYUP:
                 self._check_keyup_events(event)
-            
-    def _check_play_button(self, mouse_pos):
-        """ Start a new game when the player clicks Play."""
-        button_clicked = self.play_button.rect.collidepoint(mouse_pos)
-        if button_clicked:
+                
+    def _check_clicks(self, mouse_pos):
+        if self.play_button.rect.collidepoint(mouse_pos):
             self._start_game()
+        if self.plus_button.rect.collidepoint(mouse_pos):
+            self.settings.level += 1
+        if self.minus_button.rect.collidepoint(mouse_pos):
+            self.settings.level -= 1
+        print(f'button clicked. Level: {self.settings.level}')
             
     def _start_game(self):
+        """ Start a new game when the player clicks Play."""
         # Reset the game statistics.
+        self.settings.initialize_dynamic_settings()
+        self.settings.update_speed()
         self.stats.reset_stats()
         self.stats.game_active = True
         
@@ -128,6 +140,8 @@ class AlienInvasion:
         # Draw the play button if the game is inactive
         if not self.stats.game_active:
             self.play_button.draw_button()
+            self.plus_button.draw_button()
+            self.minus_button.draw_button()
         
         pygame.display.flip()
         
@@ -193,6 +207,7 @@ class AlienInvasion:
             #Destroy existing bullets and create a new fleet.
             self.bullets.empty()
             self._create_fleet()
+            self.settings.level_up()
         
     def _update_aliens(self):
         """Check if the fleet is at and edge, the update the positions of all aliens in the fleet."""
