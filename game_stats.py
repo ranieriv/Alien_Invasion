@@ -11,6 +11,14 @@ class GameStats:
         
         # High score shoiuld never be reset.
         self.high_score = 0
+        with open("highscore.txt", "r") as file: 
+            content = file.read()
+            try:
+                self.high_score = float(content)
+            except ValueError:
+                print("Falha em resgatar o high score")
+                
+            
         
     def reset_stats(self):
         """ Initialize statistics that can change during the game."""

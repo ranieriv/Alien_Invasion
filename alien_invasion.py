@@ -65,7 +65,7 @@ class AlienInvasion:
         """Respond to keypresses and mouse events."""
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                sys.exit()
+                self._quit_game()
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 mouse_pos = pygame.mouse.get_pos()
                 self._check_clicks(mouse_pos)
@@ -118,7 +118,7 @@ class AlienInvasion:
         elif event.key == pygame.K_SPACE:
             self._fire_bullet()
         elif event.key == pygame.K_q:
-            sys.exit()
+            self._quit_game()
         elif event.key == pygame.K_p:
             if self.stats.game_active == False:
                 self._start_game()
@@ -272,6 +272,14 @@ class AlienInvasion:
                 # Treat this the same as if the ship got hit.
                 self._ship_hit()
                 break
+            
+    def _quit_game(self):
+        """ Record the high score and exit the game. """
+        str_high_score = str(self.stats.high_score)
+        print(f"High score: {str_high_score}")
+        with open("highscore.txt", "w") as file:
+            file.write(str_high_score)
+        sys.exit()
             
 if __name__ == '__main__':
     # Make a game instance, and run the game.
