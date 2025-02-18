@@ -1,0 +1,48 @@
+[33mcommit d1327a103c10f54cf74f564a65ff832edf1a4d99[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: ranieriv <ranierivilela@gmail.com>
+Date:   Sun Apr 14 17:00:30 2024 -0300
+
+    Incluído all time highscore
+
+[33mcommit 24e53fec0c224c575d17f3711a0d3ddfdcb67efd[m
+Author: ranieriv <ranierivilela@gmail.com>
+Date:   Sun Apr 14 16:44:45 2024 -0300
+
+    Game pleno funcional, com scoreboard e levels
+
+[33mcommit f58750b691740f728be1a1d4345d667b70e6e322[m
+Author: Ranieri <70678944+ranieriv@users.noreply.github.com>
+Date:   Sun Mar 31 23:29:53 2024 -0300
+
+    Update settings.py
+    
+    Removed some settings used to test the implementation of some feature.
+
+[33mcommit 6facc4dde2b9e423f11f6b3759dd25f82200693f[m
+Merge: 9bdbfc4 b52b3f0
+Author: Ranieri <70678944+ranieriv@users.noreply.github.com>
+Date:   Sun Mar 31 23:22:31 2024 -0300
+
+    Merge pull request #1 from ranieriv/feature/level-buttons
+    
+    Successfull implemented the lvl control in the start of the game
+
+[33mcommit b52b3f09a41c07626bd67a82abc934baa52b0a65[m
+Author: ranieriv <ranierivilela@gmail.com>
+Date:   Sun Mar 31 23:16:09 2024 -0300
+
+    Successfull implemented the lvl control in the start of the game
+
+[33mcommit 9bdbfc4a3604c2b079010c85547989edbc7e4bdf[m
+Author: Ranieri <70678944+ranieriv@users.noreply.github.com>
+Date:   Sun Mar 31 20:01:11 2024 -0300
+
+    Create README.md
+    
+    Add README.md
+
+[33mcommit 1103ff10d47e8d67ac1a1787d2691cfa51119c72[m
+Author: ragin-hari <70678944+ragin-hari@users.noreply.github.com>
+Date:   Sat Mar 23 19:09:22 2024 -0300
+
+    Commit Inicial
